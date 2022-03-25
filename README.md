@@ -49,15 +49,15 @@
 ## 目前支持列表
 - KeyenceMcNet(2022/03/23 測試人員:黃御德)
 - Modbus(2022/03/23 測試人員:黃御德,不會游泳的魚)
-- SiemensS7Net
+- SiemensS7Net(待測)
 - MelsecMcNet(2022/03/23 測試人員:不會游泳的魚)
-- PanasonicMcNet
-- OmronFinsNet
-- KeyenceNanoSerial
-- FujiSPB
-- FatekProgram
-- InovanceAMTcp
-- YokogawaLinkTcp
+- PanasonicMcNet(待測)
+- OmronFinsNet(待測)
+- KeyenceNanoSerial(待測)
+- FujiSPB(待測)
+- FatekProgram(待測)
+- InovanceAMTcp(待測)
+- YokogawaLinkTcp(待測)
 - VigorOverTcp(2022/03/23 測試人員:黃御德)
 
 ---
