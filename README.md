@@ -32,17 +32,41 @@
             vigorPlc.SleepTime = 1;			  //單筆數據讀取延遲
             vigorPlc.ScanTime = 50;                           //掃描時間
             vigorPlc.Type = ProtocolLib.ProtocolType.VigorOverTcp;      //定義通訊協定
-            vigorPlc.RegisterReadTag("Test", "D0", 4, new List<string>() 
+            vigorPlc.RegisterReadTag("狀態群組", "D0", 4, new List<string>() 
             { "機械X", "機械Y", "機械X", "狀態代碼" }
             ,ProtocolLib.Type.ProtocolType.ProtocolTypeList.UInt16);    //定義讀取標籤
             vigorPlc.RegisterWriteTag("電燈開關1","M0",ProtocolLib.Type.ProtocolType.ProtocolTypeList.Bool , false);        //定義寫入標籤非陣列
             vigorPlc.RegisterWriteTag("座標路徑", "D10", ProtocolLib.Type.ProtocolType.ProtocolTypeList.Int32 , true);      //定義寫入標籤陣列
                                     
-            ProtocolManager.Instance.RegisterMachin("vigor" , vigorPlc);            //註冊機台到駐列
+            ProtocolManager.Instance.RegisterMachin("設備的名稱" , vigorPlc);            //註冊機台到駐列
             ProtocolManager.Instance.Start();                                       //啟動掃描
 ```
 
 ### 2.讀取標籤
+```c#
+            if(ProtocolManager.Instance.GetMachin("設備的名稱" , out Protocol device))
+            {
+                 //取得一個群組裡面的所有資料點
+                 //注意這裡使用泛型型別，使用者可以自訂回傳的類別
+                device.GetAllValue<bool>("狀態群組").ToList().ForEach(x => {
+                    Console.WriteLine(string.Format("Tag: {0} , Value: {1} , IsSuccess: {2}", x.Key, x.Value.Value, x.Value.IsSuccess));
+                });
+                
+                //取得單一群組裡的單一數據點
+                //***** 沒錯取的數據就是這麼簡單，一行即可呦! *****//
+                var posX = device.GetValue<int>("狀態群組", "機械X");
+                var posY = device.GetValue<int>("狀態群組", "機械Y");
+                var posZ = device.GetValue<int>("狀態群組", "機械Z");
+                var status = cm122.GetValue<int>("狀態群組", "狀態代碼");
+                
+                //打印內容
+                Console.WriteLine(string.Format("機械座標X: {0} , 數據點連線狀態: {1}" , posX.Value , posX.IsSuccess));
+                Console.WriteLine(string.Format("機械座標Y: {0} , 數據點連線狀態: {1}" , posY.Value , posX.IsSuccess));
+                Console.WriteLine(string.Format("機械座標Z: {0} , 數據點連線狀態: {1}" , posZ.Value , posX.IsSuccess));
+                Console.WriteLine(string.Format("狀態代碼: {0} , 數據點連線狀態: {1}" , status.Value , status.IsSuccess));
+                
+            }
+```
 
 ### 3-1.寫入單一數據標籤
 
