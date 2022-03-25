@@ -5,6 +5,13 @@
 ### 為了我的頭髮著想，懇求各位大大斗內斗內!!
 ### 該插件目前屬於測試階段，不開放原始碼，但能仍可使用，未來的版本將進行收費，目前開放的版本可以解決大部分的難題，如果有問題將會再付費版更新，謝謝!
 ### 如需教育訓練請(1500 塊/1hr) [不教受 hslcommunication 套件操作，如想學習請至原作者群組購買課程] + Line:3026016
+
+### 註冊機台
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/raLfhP-Ox2A/0.jpg)](https://youtu.be/raLfhP-Ox2A "註冊機台")
+### 讀取 寫入 數據
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/S6IUPbTr2VY/0.jpg)](https://youtu.be/S6IUPbTr2VY "讀取 寫入 數據")
+### 自動循環讀取數據
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/eX5RCPrtIug/0.jpg)](https://youtu.be/eX5RCPrtIug "自動循環讀取數據")
 ---
 ## 簡介
 ### ProtocolManager是hslCommunication的讀寫器擴展，打破了傳統讀取陣列一個一個對應的窘境，目前由本人開發大部分的功能，基本上可以單獨對每一個暫存器編上自己定義的標籤，包括讀以及寫，目前僅支持NetworkDeviceBase基類的擴展。
