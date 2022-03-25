@@ -20,7 +20,7 @@
 
 ## 使用方法
 
-### 註冊機台
+### 1.註冊機台
 
 ``` c#
             Protocol vigorPlc = new ProtocolLib.Protocol();   //實力化管理器
@@ -37,5 +37,14 @@
             ,ProtocolLib.Type.ProtocolType.ProtocolTypeList.UInt16);    //定義讀取標籤
             vigorPlc.RegisterWriteTag("電燈開關1","M0",ProtocolLib.Type.ProtocolType.ProtocolTypeList.Bool , false);        //定義寫入標籤非陣列
             vigorPlc.RegisterWriteTag("座標路徑", "D10", ProtocolLib.Type.ProtocolType.ProtocolTypeList.Int32 , true);      //定義寫入標籤陣列
+                                    
+            ProtocolManager.Instance.RegisterMachin("vigor" , vigorPlc);            //註冊機台到駐列
+            ProtocolManager.Instance.Start();                                       //啟動掃描
 ```
+
+### 2.讀取標籤
+
+### 3-1.寫入單一數據標籤
+
+### 3-2.寫入陣列標籤
  
