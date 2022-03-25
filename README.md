@@ -18,6 +18,11 @@
 - YokogawaLinkTcp
 - VigorOverTcp(2022/03/23 測試人員:黃御德)
 
+
+## 注意事項
+- 本擴展插件在使用者執行"ProtocolManager.Instance.Start();"時會在背景開一條無窮線程來掃描設備數據，所以使用者請勿再此指令再次寫迴圈，會造成cpu使用率突增!!
+- 註冊"寫入標籤"時須注意最後一個參數"IsArray"代表該點為是否屬於陣列，請勿再非陣列點為寫入單一數據，也請勿在單一數據點位寫入陣列數據。
+
 ## 使用方法
 
 ### 1.註冊機台
@@ -68,7 +73,25 @@
             }
 ```
 
-### 3-1.寫入單一數據標籤
+### 3.寫入數據標籤
 
-### 3-2.寫入陣列標籤
- 
+
+```c#
+            //初始化一個列表集合
+            List<int> data = new List<int>();
+            //迴圈塞入資料
+            for (int i = 0; i< 50; i++)
+            {
+                data.Add(i);
+            }
+            //
+            if (ProtocolManager.Instance.GetMachin("設備的名稱", out Protocol device))
+            {
+                device.WriteTagValue("電燈開關1", true);         //寫入單一個數據
+                device.WriteTagValue("座標路徑", data.ToArray());//寫入陣列數據
+                
+            }
+```
+
+
+
